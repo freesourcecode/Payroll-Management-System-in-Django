@@ -1,0 +1,947 @@
+{% extends "hrms/base.html" %}
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<h4 class="card-title">
+			{{ head }}
+			</h4>
+		</div>
+
+		<div class="card-body">
+			{% if  payroll_list_to %}
+			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+			  Add Payroll
+			</button>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#govbenefits">
+			  Government Benefits Report
+			</button>
+			{% else %}
+				<a href="{% url 'payroll-list' %}" class="btn btn-danger">Go back</a>
+			{% endif %}
+
+			{% if formset.management_form %}
+					<a href="{% url 'payroll-csv' base_payroll.id %}" class="btn btn-danger">Print Payroll</a>
+					<a href="{% url 'payroll-payslip' base_payroll.id %}" class="btn btn-success">Print payslip</a>
+					<a href="{% url 'payroll-billing' base_payroll.id %}" class="btn btn-primary">Print Billing</a>
+			{% endif %}
+
+
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+			<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+
+			{% if formset.management_form %}
+
+				<div class="table-responsive" style="margin-top: 10px">
+				<table id="example" class="table table-striped table-bordered" style="width:100%">
+						<thead class="bg-success text-white">
+							<tr>
+								<th scope="col" class="text-center">#</th>
+								<th scope="col" class="text-center">Employee</th>
+								<th scope="col" class="text-center">Regular Days</th>
+								<th scope="col" class="text-center">Rate</th>
+								<th scope="col" class="text-center">Regular Pay</th>
+								{% if base_payroll.company.get_company_rates.activate_ecola %}
+									<th scope="col" class="text-center">Ecola</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_overtime %}
+									<th scope="col" class="text-center">OT</th>
+									<th scope="col" class="text-center">OT Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_sunday %}
+									<th scope="col" class="text-center">Sunday</th>
+									<th scope="col" class="text-center">Sunday Pay</th>
+									<th scope="col" class="text-center">Sunday OT</th>
+									<th scope="col" class="text-center">Sunday OT Pay</th>
+									<th scope="col" class="text-center">Sunday ND</th>
+									<th scope="col" class="text-center">Sunday ND Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_holiday %}
+									<th scope="col" class="text-center">Holiday</th>
+									<th scope="col" class="text-center">Holiday Pay</th>
+									<th scope="col" class="text-center">Hol. OT</th>
+									<th scope="col" class="text-center">Hol. OT Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_special %}
+									<th scope="col" class="text-center">Special Holiday</th>
+									<th scope="col" class="text-center">Special Holiday Pay</th>
+									<th scope="col" class="text-center">Special Hol. OT</th>
+									<th scope="col" class="text-center">Special Hol. OT Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_rest_day %}
+									<th scope="col" class="text-center">Rest Days</th>
+									<th scope="col" class="text-center">Rest Day Pay</th>
+									<th scope="col" class="text-center">Rest Day OT</th>
+									<th scope="col" class="text-center">Rest Day OT Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_night_differential %}
+									<th scope="col" class="text-center">Night Diff.</th>
+									<th scope="col" class="text-center">Night Diff Pay</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_tardiness %}
+									<th scope="col" class="text-center">Tardiness / Undertime</th>
+									<th scope="col" class="text-center">Tardiness / Undertime Deduct.</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_uniform %}
+									<th scope="col" class="text-center">Uniform</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_medical %}
+									<th scope="col" class="text-center">Medical</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_canteen %}
+									<th scope="col" class="text-center">Canteen</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_gatepass %}
+									<th scope="col" class="text-center">Gatepass</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_vale %}
+									<th scope="col" class="text-center">Vale</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_thirteenth_month %}
+									<th scope="col" class="text-center">13th Month</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_sil %}
+									<th scope="col" class="text-center">SIL</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_tshirt %}
+									<th scope="col" class="text-center">TSHIRT</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_rf %}
+										<th scope="col" class="text-center">RF</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_house %}
+										<th scope="col" class="text-center">HOUSE</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_misc %}
+										<th scope="col" class="text-center">MISC</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_pants %}
+										<th scope="col" class="text-center">Pants</th>
+								{% endif %}
+
+
+								{% if base_payroll.company.get_company_rates.activate_company_loan %}
+										<th scope="col" class="text-center">Company Loan</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_sss_loan %}
+									<th scope="col" class="text-center">SSS Loan</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_pagibig_loan %}
+									<th scope="col" class="text-center">PAGIBIG Loan</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_allowance %}
+										<th scope="col" class="text-center">Allowance</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_adjustment %}
+									<th scope="col" class="text-center">Adjustment</th>
+								{% endif %}
+
+								{% if base_payroll.company.get_company_rates.activate_transpo_allowance %}
+									<th scope="col" class="text-center">Trans. Allowance</th>
+								{% endif %}
+
+								<th scope="col" class="text-center">SSS</th>
+								<th scope="col" class="text-center">PHILHEALTH</th>
+								<th scope="col" class="text-center">PAGIBIG</th>
+								<th scope="col" class="text-center">Net</th>
+
+								{% if base_payroll.company.get_company_rates.activate_service_fee %}
+										<th scope="col" class="text-center">Service Fee</th>
+								{% endif %}
+								<th scope="col" class="text-center">Employer SSS</th>
+								<th scope="col" class="text-center">Employer PHILHEALTH</th>
+								<th scope="col" class="text-center">Employer PAGIBIG</th>
+
+
+							</tr>
+						</thead>
+						<form method="POST" novalidate="">
+							{{ formset.management_form }}
+							{% csrf_token %}
+						<tbody>
+							{% for form in formset %}
+								<tr>
+									<th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+									<td class="align-middle text-center">{{ form.employee }}</td>
+									<td class="align-middle text-center">{{form.regular_days}}</td>
+									<td class="align-middle text-center">{{form.rate}}</td>
+									<td class="align-middle text-center">{{form.regular_amount}}</td>
+									{% if base_payroll.company.get_company_rates.activate_ecola %}
+										<td class="align-middle text-center">{{form.ecola}}</td>
+									{% endif %}
+									{% if base_payroll.company.get_company_rates.activate_overtime %}
+										<td class="align-middle text-center">{{form.overtime_regular}}</td>
+										<td class="align-middle text-center">{{form.overtime_regular_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_sunday %}
+										<td class="align-middle text-center">{{form.sunday}}</td>
+										<td class="align-middle text-center">{{form.sunday_amount}}</td>
+										<td class="align-middle text-center">{{form.sunday_overtime}}</td>
+										<td class="align-middle text-center">
+										{{form.sunday_overtime_amount}}</td>
+										<td class="align-middle text-center">
+										{{form.sunday_nd}}</td>
+										<td class="align-middle text-center">
+										{{form.sunday_nd_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_holiday %}
+										<td class="align-middle text-center">{{form.holiday_regular_days}}</td>
+										<td class="align-middle text-center">{{form.holiday_regular_amount}}</td>
+										<td class="align-middle text-center">{{form.holiday_overtime}}</td>
+										<td class="align-middle text-center">{{form.holiday_overtime_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_special %}
+										<td class="align-middle text-center">{{form.special_holiday_days}}</td>
+										<td class="align-middle text-center">{{form.special_holiday_amount}}</td>
+										<td class="align-middle text-center">{{form.special_holiday_overtime}}</td>
+										<td class="align-middle text-center">{{form.special_holiday_overtime_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_rest_day %}
+										<td class="align-middle text-center">{{form.rest_days}}</td>
+										<td class="align-middle text-center">{{form.rest_amount}}</td>
+										<td class="align-middle text-center">{{form.rest_day_overtime}}</td>
+										<td class="align-middle text-center">{{form.rest_day_overtime_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_night_differential %}
+										<td class="align-middle text-center">{{form.night_diff_days}}</td>
+										<td class="align-middle text-center">{{form.night_diff_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_tardiness %}
+										<td class="align-middle text-center">{{form.tardiness_undertime_regular}}</td>
+										<td class="align-middle text-center">{{form.tardiness_undertime_regular_amount}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_uniform %}
+										<td class="align-middle text-center">{{form.uniform}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_medical %}
+										<td class="align-middle text-center">{{form.medical}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_canteen %}
+										<td class="align-middle text-center">{{form.canteen}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_gatepass %}
+										<td class="align-middle text-center">{{form.gatepass}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_vale %}
+										<td class="align-middle text-center">{{form.vale}}</td>
+									{% endif %}
+
+
+									{% if base_payroll.company.get_company_rates.activate_thirteenth_month %}
+										<td class="align-middle text-13th Month">{{form.thirteenth_month}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_sil %}
+										<td class="align-middle text-13th Month">{{form.sil}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_tshirt %}
+										<td class="align-middle text-13th Month">{{form.tshirt}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_rf %}
+											<td class="align-middle text-13th Month">{{form.rf}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_house %}
+											<td class="align-middle text-13th Month">{{form.house}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_misc %}
+											<td class="align-middle text-13th Month">{{form.misc}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_pants %}
+											<td class="align-middle text-13th Month">{{form.pants}}</td>
+									{% endif %}
+
+
+
+									{% if base_payroll.company.get_company_rates.activate_company_loan %}
+										<td class="align-middle text-13th Month">{{form.company_loan}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_sss_loan %}
+										<td class="align-middle text-13th Month">{{form.sss_loan}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_pagibig_loan %}
+										<td class="align-middle text-13th Month">{{form.pagibig_loan}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_allowance %}
+										<td class="align-middle text-13th Month">{{form.allowance}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_adjustment %}
+										<td class="align-middle text-13th Month">{{form.adjustment}}</td>
+									{% endif %}
+
+									{% if base_payroll.company.get_company_rates.activate_transpo_allowance %}
+										<td class="align-middle text-13th Month">{{form.transpo_allowance}}</td>
+									{% endif %}
+
+
+
+									<td class="align-middle text-13th Month">{{form.sss}}</td>
+									<td class="align-middle text-13th Month">{{form.philhealth}}</td>
+									<td class="align-middle text-13th Month">{{form.pagibig}}</td>
+
+									<td class="align-middle text-13th Month">{{form.net_amount}}</td>
+
+									{% if base_payroll.company.get_company_rates.activate_service_fee %}
+											<td class="align-middle text-13th Month">{{form.service_fee}}</td>
+									{% endif %}
+
+									<td class="hidden">{{ form.sss_employer }}</td>
+									<td class="hidden">{{ form.pagibig_employer }}</td>
+									<td class="hidden">{{ form.philhealth_employer }}</td>
+
+
+									<td class="hidden">{{ form.id }}</td>
+									<td class="hidden">{{ form.gross.as_hidden }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_company_loan }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_vale }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_canteen }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_medical }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_gatepass }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_sss_loan }}</td>
+									<td class="hidden">{{ form.valid_for_deduct_pagibig_loan }}</td>
+								</tr>
+
+							{% endfor %}
+							<button type="submit" class="btn btn-primary" name="button">Save</button>
+						</tbody>
+
+					</form>
+					</table>
+				</div>
+			{% endif %}
+
+
+
+      {% if may_payroll_list %}
+
+      <div class="table-responsive" style="margin-top: 10px">
+				<table id="example" class="table table-striped table-bordered" style="width:100%">
+          <thead class="bg-success text-white">
+            <tr>
+              <th scope="col" class="text-center">#</th>
+              <th scope="col" class="text-center">Cut Off</th>
+              <th scope="col" class="text-center">Company</th>
+              <th scope="col" class="text-center">Payment Method</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for payroll in may_payroll_list %}
+              <tr>
+                <th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+                <td class="align-middle text-center">{{ payroll.start_date }} - {{payroll.end_date}}</td>
+                <td class="align-middle text-center">{{ payroll.company }}</td>
+                <td class="align-middle text-center">{{ payroll.payment_method }}</td>
+                <td class="align-middle text-center">
+									{% if payroll.company.company_name == "phil asia"%}
+									<a href="{% url 'payroll-view-phil-asia' payroll.pk %}" class="btn btn-success">Create Payroll</a>
+									<a href="{% url 'payroll-delete-base' payroll.pk %}" onclick="return confirm('Are you sure you want to delete this payroll?                                          Note: The employees associated with this payroll will also be deleted.');" class="btn btn-danger">Delete</a>
+
+									{% else %}
+									<a href="{% url 'payroll-view' payroll.pk %}" class="btn btn-primary">Create Payroll</a>
+									<a href="{% url 'payroll-delete-base' payroll.pk %}" onclick="return confirm('Are you sure you want to delete this payroll?                                          Note: The employees associated with this payroll will also be deleted.');" class="btn btn-danger">Delete</a>
+
+									{% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+
+			function get_regular_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var regular_days = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-regular_days").value
+					var result = roundUp(rate * regular_days, 2) ;
+
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-regular_amount").value = result;
+
+					// check for ecola
+					{% if base_payroll.company.get_company_rates.activate_ecola %}
+						document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-ecola").value = {{base_payroll.company.get_company_rates.ecola_rate}} * regular_days;
+					{% endif %}
+
+					{% if base_payroll.company.get_company_rates.activate_thirteenth_month%}
+						var thirtheenth_month = rate/12*regular_days
+						thirtheenth_month = roundUp(thirtheenth_month,2)
+						console.log("thirtheenth_month");
+						console.log(thirtheenth_month);
+						document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-thirteenth_month").value = thirtheenth_month;
+					{% endif %}
+					// alert({{ forloop.counter|add:'-1'}})
+					// console.log({{ forloop.counter }})
+					// calculate for net
+
+					get_net()
+				{% endfor %}
+			}
+
+
+
+			// function get_training_amount(){
+			// 	var training_rate= document.getElementsByName("training_rate")[0].value
+			// 	var training_days = document.getElementsByName("training_days")[0].value
+			// 	var result = roundUp(training_rate*training_days * regular_days, 2) ;
+			// 	document.getElementById("training_amount").value = result;
+			//
+			// 	// calculate for net
+			// 	get_net()
+			// }
+			function get_sunday_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var sunday = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday").value
+					var result = roundUp(rate/8*1.3*sunday, 2) ;
+
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_amount").value = result;
+
+					// calculate for net
+
+					get_net()
+				{% endfor %}
+			}
+
+			function get_overtime_regular_amount(){
+				{% for form in formset %}
+					var emp_id = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-employee").value;
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var overtime_regular = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-overtime_regular").value
+
+					var overtime_formula = 0.0;
+					{% for all in all_employees %}
+						if (emp_id == {{all.employee_id}}) {
+							console.log("{{all.overtime_formula}}");
+							console.log("{{all.employee_id__first_name}}");
+							overtime_formula = {{all.overtime_formula}}
+						}
+						
+						
+					{% endfor %}
+
+
+					var first_result = rate/8*overtime_formula*overtime_regular;
+					var result = roundUp(first_result, 2) ;
+
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-overtime_regular_amount").value = result;
+					// alert(first_result ,  result );
+					console.log(first_result);
+					console.log(result);
+					get_net()
+
+					
+
+					// alert(emp_id)
+
+	
+					// $.ajax({
+					//       url: "{% url 'get-overtime-formula'  %}",
+					//       data: "emp_id" : emp_id,
+				 //          dataType: 'json',
+				 //          type: "GET",
+				 //          success: function (data) {
+					//           if (data.formula) {
+					//             alert(data.formula);
+					//           }
+					//       }
+					// });
+
+				{% endfor %}
+			}
+
+			function get_sunday_overtime_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var sunday_overtime = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_overtime").value
+					var first_result = rate/8*1.69*sunday_overtime;
+					var result = roundUp(first_result, 2) ;
+
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_overtime_amount").value = result;
+					// alert(first_result ,  result );
+					console.log(first_result);
+					console.log(result);
+					get_net()
+				{% endfor %}
+			}
+
+			function get_sunday_nd_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var sunday_nd = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_nd").value
+					var first_result = rate/8*1.3*0.1*sunday_nd;
+					var result = roundUp(first_result, 2) ;
+
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_nd_amount").value = result;
+					// alert(first_result ,  result );
+					console.log(first_result);
+					console.log(result);
+					get_net()
+				{% endfor %}
+			}
+
+			function get_rest_day_amount(){
+				{% for form in formset %}
+					var rest_days= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_days").value)
+					var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+					// var result = roundUp(rest_days*((rate/8*1.3*8−rate)+rate), 2) ;
+					var result = roundUp(rest_days*((rate/8*1.3*8-rate)+rate), 2) ;
+					alert(result)
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_amount").value = result;
+
+				{% endfor %}
+				get_net()
+			}
+
+			function get_night_diff_amount(){
+				{% for form in formset %}
+					var night_diff= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-night_diff_days").value)
+					var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+					// var result = roundUp(rest_days*((rate/8*1.3*8−rate)+rate), 2) ;
+					var result = roundUp(night_diff*(rate/8*0.1), 2) ;
+					alert(result)
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-night_diff_amount").value = result;
+
+				{% endfor %}
+				get_net()
+			}
+
+			function get_rest_day_overtime_amount(){
+				{% for form in formset %}
+					var rest_day_overtime= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_day_overtime").value)
+					var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+					var result = roundUp(rate/8*1.69*rest_day_overtime, 2) ;
+					console.log(rate/8*1.69*rest_day_overtime);
+					console.log(result);
+					document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_day_overtime_amount").value = result;
+				{% endfor %}
+				get_net()
+			}
+
+			function get_holiday_regular_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var holiday_days = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_regular_days").value
+					var result = roundUp((rate*2)*holiday_days, 2) ;
+				  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_regular_amount").value = result;
+				{% endfor %}
+				get_net()
+			}
+
+			function get_holiday_overtime_amount(){
+				{% for form in formset %}
+				var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+				var holiday_overtime = Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_overtime").value)
+				var result = roundUp(rate/8*1.69*holiday_overtime, 2) ;
+				console.log(rate/8*1.3*holiday_overtime);
+				console.log(result);
+			  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_overtime_amount").value = result;
+
+				get_net()
+				{% endfor %}
+			}
+
+
+			function get_special_holiday_amount(){
+				{% for form in formset %}
+
+					var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+					var special_holiday_days = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_days").value
+					var result = roundUp(rate*1.3*special_holiday_days, 2) ;
+				  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_amount").value = result;
+				{% endfor %}
+				get_net()
+			}
+
+			function get_special_holiday_overtime_amount(){
+				{% for form in formset %}
+				var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+				var special_holiday_overtime = Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_overtime").value)
+				var result = roundUp(rate/8*1.69*special_holiday_overtime, 2) ;
+				console.log(rate/8*1.69*special_holiday_overtime);
+				console.log(result);
+			  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_overtime_amount").value = result;
+
+				get_net()
+				{% endfor %}
+			}
+
+			function get_tardiness_undertime_regular_amount(){
+				{% for form in formset %}
+					var rate= Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value)
+					var tardiness_undertime_regular = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tardiness_undertime_regular").value
+					var result = roundUp(rate/8*tardiness_undertime_regular, 2) ;
+					console.log(rate/8*tardiness_undertime_regular);
+					console.log(result);
+				  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tardiness_undertime_regular_amount").value = result;
+
+					get_net()
+				{% endfor %}
+			}
+
+			function get_uniform(){
+				get_net()
+			}
+			function get_medical(){
+				get_net()
+			}
+			function get_canteen(){
+				get_net()
+			}
+			function get_gatepass(){
+				get_net()
+			}
+			function get_vale(){
+				get_net()
+			}
+			function get_pants(){
+				get_net()
+			}
+			function get_service_fee(){
+				get_net()
+			}
+			// function get_thirteenth_month(){
+			// 	get_net()
+			// }
+			function get_sil(){
+				get_net()
+			}
+			function get_tshirt(){
+				get_net()
+			}
+			function get_rf(){
+				get_net()
+			}
+
+			function get_house(){
+				get_net()
+			}
+
+			function get_misc(){
+				get_net()
+			}
+
+			function get_night_diff(){
+				get_net()
+			}
+
+			function add_allowance(){
+				get_net()
+			}
+
+			function add_adjustment(){
+				get_net()
+			}
+
+			function add_transpo_allowance(){
+				get_net()
+			}
+
+
+			function get_net(){
+				// calculate for net
+				{% for form in formset %}
+
+					var regular_days = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-regular_days").value
+
+					if (regular_days > 0) {
+
+						// check all if may laman or wala
+
+
+						var regular_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-regular_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-regular_amount").value) : 0;
+						var overtime_regular_amount =  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-overtime_regular_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-overtime_regular_amount").value) : 0;
+						var rest_amount =  document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_amount").value) : 0;
+						var rest_day_overtime_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_day_overtime_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rest_day_overtime_amount").value) : 0;
+						var holiday_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_regular_amount").value) : 0;
+						var holiday_overtime_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-holiday_overtime_amount").value) : 0;
+						var special_holiday_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_amount").value) : 0;
+						var special_holiday_overtime_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_overtime_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-special_holiday_overtime_amount").value) : 0;
+						var ecola = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-ecola") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-ecola").value) : 0;
+						var sunday_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_amount").value) : 0;
+						var sunday_overtime_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_overtime_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_overtime_amount").value) : 0;
+						var sunday_nd_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_nd_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sunday_nd_amount").value) : 0;
+
+						var night_diff_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-night_diff_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-night_diff_amount").value) : 0;
+
+
+						// allowance , adjustment, transpo_allowance
+						var allowance = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-allowance") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-allowance").value) : 0;
+
+						var adjustment = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-adjustment") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-adjustment").value) : 0;
+
+						var transpo_allowance = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-transpo_allowance") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-transpo_allowance").value) : 0;
+
+
+
+						var net = regular_amount + overtime_regular_amount + rest_amount + rest_day_overtime_amount + special_holiday_amount + special_holiday_overtime_amount + ecola + sunday_amount + sunday_overtime_amount + sunday_nd_amount + holiday_amount + holiday_overtime_amount + night_diff_amount + allowance + adjustment + transpo_allowance;
+
+
+						var gross = roundUp(net,2);
+						// get gross
+						document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-gross").value = gross;
+						// get sss_employer
+
+
+						// get pagibig_employer
+						// get philhealth_employer
+
+						console.log(net);
+						var tardiness_undertime_regular_amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tardiness_undertime_regular_amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tardiness_undertime_regular_amount").value) : 0;
+						var gatepass = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-gatepass") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-gatepass").value) : 0;
+						var uniform = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-uniform") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-uniform").value) : 0;
+						var medical = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-medical") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-medical").value) : 0;
+						var canteen = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-canteen") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-canteen").value) : 0;
+						var company_loan = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-company_loan") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-company_loan").value) : 0;
+						var sss_loan = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss_loan") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss_loan").value) : 0;
+						var pagibig_loan = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig_loan") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig_loan").value) : 0;
+						var sss = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss").value) : 0;
+						var pagibig = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig").value) : 0;
+						var philhealth = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-philhealth") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-philhealth").value) : 0;
+						var vale = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-vale") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-vale").value) : 0;
+						var pants = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pants") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pants").value) : 0;
+						var service_fee = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-service_fee") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-service_fee").value) : 0;
+						// var thirteenth_month = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-thirteenth_month") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-thirteenth_month").value) : 0;
+						var sil = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sil") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sil").value) : 0;
+						var tshirt = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tshirt") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-tshirt").value) : 0;
+						var rf = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rf") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rf").value) : 0;
+						var house = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-house") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-house").value) : 0;
+						var misc = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-misc") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-misc").value) : 0;
+						console.log("pagibig loan: "+ pagibig_loan)
+						 net = net - tardiness_undertime_regular_amount
+											// - gatepass
+											- uniform
+											// - medical
+											// - canteen
+											// - company_loan
+											// - sss_loan
+											//- pagibig_loan
+											- sss
+											- pagibig
+											- philhealth
+											// - vale
+											- pants
+											// - service_fee
+											// - thirteenth_month
+											- sil
+											- tshirt
+											- rf
+											- house
+											- misc;
+
+						// company loan
+						if (company_loan > 0) {
+							var temp_net = net - company_loan;
+							if (temp_net > 0) {
+								net = net - company_loan;
+								console.log("pwede deduct: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value);
+
+							}else{
+								console.log("hindi pet net: " + net);
+								console.log("hindipwede deduct: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-company_loan").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+						// vale
+						if (vale > 0) {
+							var temp_net = net - vale;
+							if (temp_net > 0) {
+								net = net - vale;
+								console.log("pwede deduct vale: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_vale").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_vale").value);
+
+							}else{
+								console.log("hindi pet net vale: " + net);
+								console.log("hindipwede deduct vale: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-vale").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+						// canteen
+						if (canteen > 0) {
+							var temp_net = net - canteen;
+							if (temp_net > 0) {
+								net = net - canteen;
+								console.log("pwede deduct canteen: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_canteen").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_canteen").value);
+
+							}else{
+								console.log("hindi pede net canteen: " + net);
+								console.log("hindipwede deduct canteen: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-canteen").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+						// medical
+						if (medical > 0) {
+							var temp_net = net - medical;
+							if (temp_net > 0) {
+								net = net - medical;
+								console.log("pwede deduct medical: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_medical").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_medical").value);
+
+							}else{
+								console.log("hindi pede net medical: " + net);
+								console.log("hindipwede deduct medical: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-medical").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+						// gatepass
+						if (gatepass > 0) {
+							var temp_net = net - gatepass;
+							if (temp_net > 0) {
+								net = net - gatepass;
+								console.log("pwede deduct gatepass: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_gatepass").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_gatepass").value);
+
+							}else{
+								console.log("hindi pede net gatepass: " + net);
+								console.log("hindipwede deduct gatepass: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-gatepass").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+						// sss_loan
+						if (sss_loan > 0) {
+							var temp_net = net - sss_loan;
+							if (temp_net > 0) {
+								net = net - sss_loan;
+								console.log("pwede deduct sss_loan: "+ net)
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_sss_loan").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_sss_loan").value);
+
+							}else{
+								console.log("hindi pede net sss_loan: " + net);
+								console.log("hindipwede deduct sss_loan: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss_loan").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+						// pagibig_loan
+						if (pagibig_loan > 0) {
+							var temp_net = net - pagibig_loan;
+							if (temp_net > 0) {
+								net = net - pagibig_loan;
+								console.log("pwede deduct pagibig_loan: "+ net);
+								// send signal na pwede
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_pagibig_loan").value = 1;
+								console.log(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_pagibig_loan").value);
+
+							}else{
+								console.log("hindi pede net pagibig_loan: " + net);
+								console.log("hindipwede deduct pagibig_loan: "+ temp_net);
+								document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig_loan").style.backgroundColor= "Yellow";
+							 // send signal na hindi pwede // set sa zero kapag ndi pde deduct
+								// document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-valid_for_deduct_company_loan").value = 0;
+							}
+						}
+
+
+						console.log("total net: " + net);
+						net = roundUp(net, 2)
+						document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-net_amount").value = net;
+						console.log(net);
+					}
+
+				{% endfor %}
+			}
+
+
+			function roundUp(num, precision) {
+		    var numStr = num.toString();
+		     var newNum = num.toFixed(precision);
+
+		      // Handle for case: roundUp(2.555, 2) = 2.56
+		      var rest = (num - newNum).toFixed(precision + 1);
+		      var pw = Math.pow(10, precision);
+
+		      if (rest * pw  >= 0.5) {
+		        var roundUpStr = newNum + '9';
+		        return (Number(roundUpStr)).toFixed(precision);
+		      }
+
+		      return Number(newNum);
+	  	}
+
+	</script>
+
+
+{% endblock content %}

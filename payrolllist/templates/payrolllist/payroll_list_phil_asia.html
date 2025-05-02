@@ -1,0 +1,255 @@
+{% extends "hrms/base.html" %}
+{% block content %}
+
+<div class="card">
+		<div class="card-header">
+			<h4 class="card-title">
+			{{ head }}
+			</h4>
+		</div>
+
+		<div class="card-body">
+			{% if  payroll_list_to %}
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			  Add Payroll
+			</button>
+			{% else %}
+				<a href="{% url 'payroll-list' %}" class="btn btn-warning">Go back</a>
+			{% endif %}
+
+			{% if formset.management_form %}
+					<a href="{% url 'payroll-csv-phil-asia' base_payroll.id %}" class="btn btn-info">Print Payroll</a>
+					<a href="{% url 'payroll-payslip-phil-asia' base_payroll.id %}" class="btn btn-info">Print payslip</a>
+					<a href="{% url 'payroll-billing-phil-asia' base_payroll.id %}" class="btn btn-info">Print Billing</a>
+					<a href="{% url 'payroll-summary-phil-asia' base_payroll.id %}" class="btn btn-info">Print Summary</a>
+			{% endif %}
+
+
+			{% if formset.management_form %}
+				<div class="table-responsive" style="margin-top: 10px">
+					<table class="table">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col" class="text-center">#</th>
+								<th scope="col" class="text-center">Employee</th>
+								<th scope="col" class="text-center">Day</th>
+								<th scope="col" class="text-center">Amount</th>
+								<th scope="col" class="text-center">Hrs</th>
+								<th scope="col" class="text-center">Pay</th>
+								<th scope="col" class="text-center">ND</th>
+								<th scope="col" class="text-center">nd_pay</th>
+								<th scope="col" class="text-center">hrs_ot</th>
+								<th scope="col" class="text-center">hrs_ot_pay</th>
+								<th scope="col" class="text-center">total_amount</th>
+								<th scope="col" class="text-center">canteen</th>
+								<th scope="col" class="text-center">office</th>
+								<th scope="col" class="text-center">sss</th>
+								<th scope="col" class="text-center">pagibig</th>
+								<th scope="col" class="text-center">philhealth</th>
+								<th scope="col" class="text-center">net amount</th>
+								
+							</tr>
+						</thead>
+						<form method="POST" novalidate="">
+							{{ formset.management_form }}
+							{% csrf_token %}
+						<tbody>
+							{% for form in formset %}
+								<tr>
+									<th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+									<td class="align-middle text-center">{{ form.employee }}</td>
+									<td class="align-middle text-center">{{form.days}}</td>
+									<td class="align-middle text-center">{{form.amount}}</td>
+									<td class="align-middle text-center">{{form.hrs}}</td>
+									<td class="align-middle text-center">{{form.pay}}</td>
+									<td class="align-middle text-center">{{form.nd}}</td>
+									<td class="align-middle text-center">{{form.nd_pay}}</td>
+									<td class="align-middle text-center">{{form.hrs_ot}}</td>
+									<td class="align-middle text-center">{{form.hrs_ot_pay}}</td>
+									<td class="align-middle text-center">{{form.total_amount}}</td>
+									<td class="align-middle text-center">{{form.canteen}}</td>
+									<td class="align-middle text-center">{{form.office}}</td>
+									<td class="align-middle text-center">{{form.sss}}</td>
+									<td class="align-middle text-center">{{form.pagibig}}</td>
+									<td class="align-middle text-center">{{form.philhealth}}</td>
+									<td class="align-middle text-center">{{form.net_amount}}</td>
+									
+									<td class="hidden">{{ form.id }}</td>
+									{# <td class="hidden">{{ form.total_amount.as_hidden }}</td> #}
+									<td class="hidden">{{ form.rate.as_hidden }}</td>
+								</tr>
+
+							{% endfor %}
+							<button type="submit" class="btn btn-primary" name="button">Save</button>
+						</tbody>
+
+					</form>
+					</table>
+				</div>
+			{% endif %}
+
+
+
+      {% if may_payroll_list %}
+      <div class="table-responsive" style="margin-top: 10px">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" class="text-center">#</th>
+              <th scope="col" class="text-center">Cut Off</th>
+              <th scope="col" class="text-center">Company</th>
+              <th scope="col" class="text-center">Payment Method</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for payroll in may_payroll_list %}
+              <tr>
+                <th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+                <td class="align-middle text-center">{{ payroll.start_date }} - {{payroll.end_date}}</td>
+                <td class="align-middle text-center">{{ payroll.company }}</td>
+                <td class="align-middle text-center">{{ payroll.payment_method }}</td>
+                <td class="align-middle text-center">
+									{% if payroll.company.company_name == "phil asia"%}
+									<a href="{% url 'payroll-view-phil-asia' payroll.pk %}" class="btn btn-info">Create Payroll</a>
+									<a href="{% url 'payroll-delete-base' payroll.pk %}" onclick="return confirm('Are you sure you want to delete this payroll?                                          Note: The employees associated with this payroll will also be deleted.');" class="btn btn-danger">Delete</a>
+
+									{% else %}
+									<a href="{% url 'payroll-view' payroll.pk %}" class="btn btn-info">Create Payroll</a>
+									<a href="{% url 'payroll-delete-base' payroll.pk %}" onclick="return confirm('Are you sure you want to delete this payroll?                                          Note: The employees associated with this payroll will also be deleted.');" class="btn btn-danger">Delete</a>
+
+									{% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+		</div>
+	</div>
+
+<script type="text/javascript">
+	
+	function get_regular_amount(){
+		{% for form  in formset %}
+			var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+			var days = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-days").value
+					var result = roundUp(rate * days, 2) ;
+
+			document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-amount").value = result;
+
+			get_net()
+		{% endfor %}
+	}
+
+	function get_hrs_pay(){
+		{% for form  in formset %}
+			var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+			var hrs= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-hrs").value
+
+			pay = (rate/12) * hrs
+			pay = roundUp(pay, 2)
+
+			
+			document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pay").value = pay;
+
+			get_net()
+		{% endfor %}
+	}
+
+
+	function get_nd_pay(){
+		{% for form  in formset %}
+			var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+			var nd= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-nd").value
+
+			if (nd > 0) {
+				rate = (((rate/12) * .1) * 12)  
+
+				nd_pay = roundUp(rate * 12, 2)
+				// alert(rate)
+				
+				document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-nd_pay").value = nd_pay;
+
+				get_net()	
+			}
+
+			
+		{% endfor %}
+	}
+
+	function get_ot_pay(){
+		{% for form  in formset %}
+			var rate= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-rate").value
+			var hrs_ot= document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-hrs_ot").value
+
+			rate = ((rate/12)*hrs_ot)*1.25
+			hrs_ot_pay = roundUp(rate, 2)
+			// alert(rate)
+			
+			document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-hrs_ot_pay").value = hrs_ot_pay;
+
+			get_net()
+		{% endfor %}
+	}
+
+
+	function get_net(){
+		{% for form in formset %}
+
+
+		var amount = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-amount") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-amount").value) : 0;
+		var pay = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pay") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pay").value) : 0;
+		var nd_pay = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-nd_pay") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-nd_pay").value) : 0;
+		var hrs_ot_pay = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-hrs_ot_pay") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-hrs_ot_pay").value) : 0;
+
+		console.log("amount" + amount)
+		console.log("pay" + pay)
+		console.log("nd_pay" + nd_pay)
+		console.log("hrs_ot_pay" + hrs_ot_pay)
+
+		// gross
+		var total_amount = amount + pay + nd_pay + hrs_ot_pay;
+		total_amount = roundUp(total_amount, 2)
+		document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-total_amount").value = total_amount;
+
+
+		var canteen = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-canteen") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-canteen").value) : 0;
+		var office = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-office") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-office").value) : 0;
+		var sss = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-sss").value) : 0;
+		var pagibig = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-pagibig").value) : 0;
+		var philhealth = document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-philhealth") ? Number(document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-philhealth").value) : 0;
+
+		deductions = canteen + office + sss + pagibig + philhealth
+
+		// ibawas yung mga dapat ibawas
+		var net_amount = total_amount; // - deductions
+		net_amount = net_amount - deductions;
+		document.getElementById("id_form-{{ forloop.counter|add:'-1' }}-net_amount").value = net_amount;
+
+		{% endfor %}
+	}
+
+
+
+	function roundUp(num, precision) {
+		    var numStr = num.toString();
+		     var newNum = num.toFixed(precision);
+
+		      // Handle for case: roundUp(2.555, 2) = 2.56
+		      var rest = (num - newNum).toFixed(precision + 1);
+		      var pw = Math.pow(10, precision);
+
+		      if (rest * pw  >= 0.5) {
+		        var roundUpStr = newNum + '9';
+		        return (Number(roundUpStr)).toFixed(precision);
+		      }
+
+		      return Number(newNum);
+	 }
+</script>
+
+	
+{% endblock content %}

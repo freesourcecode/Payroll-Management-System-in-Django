@@ -1,0 +1,32 @@
+{% extends "hrms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+	<div class="card">
+		<div class="card-body">
+			<h4>Search Contributions</h4>
+        <a href="" class="btn btn-warning">Go back</a>
+				<hr>
+			<form method="POST" novalidate="">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-3 example-grid-col">
+					</div>
+					<div class="col-6 example-grid-col">
+						<h5><strong>Regular Inputs</strong></h5>
+						{{ form|crispy  }}
+					</div>
+					<div class="col-3 example-grid-col">
+					</div>
+
+				</div>
+				<div align='right'>
+				<button onclick="return confirm('are you sure you doubled check the contents?')" type="submit" class="btn btn-success"> Search</button>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+
+{% endblock content %}

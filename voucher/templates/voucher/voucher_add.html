@@ -1,0 +1,37 @@
+{% extends "hrms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card">
+		<div class="card-body">
+			{{head}} 
+
+		</div>
+</div>
+	<div class="card">
+		<div class="card-body">
+			<a href="{% url 'voucher' %}" class="btn btn-info">Go Back</a>
+
+			<div class="row">
+				<div class="col example-grid-col">
+				</div>
+				<div class="col-7 example-grid-col">
+					<form method="POST" novalidate="">
+						<div class="form-group">
+							{% csrf_token %}
+							{{ form|crispy  }}
+						</div>
+						<button type="submit" class="btn btn-success"> Save</button>
+					</form>
+				</div>
+				<div class="col example-grid-col">
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	
+{% endblock content %}

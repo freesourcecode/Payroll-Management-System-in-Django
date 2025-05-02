@@ -1,0 +1,360 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <!-- Mirrored from demo.frontted.com/hero/050520180000/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Sep 2018 11:42:13 GMT -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{{ title }}</title>
+        <link type="text/css" href="{% static 'assets/css/vendor-morris.css" rel="stylesheet'%}">
+        <link type="text/css" href="{% static 'assets/css/vendor-bootstrap-datepicker.css' %}" rel="stylesheet">
+        <!-- Prevent the demo from appearing in search engines -->
+        <meta name="robots" content="noindex">
+        <!-- App CSS -->
+        <link type="text/css" href="{% static 'assets/css/app.css' %}" rel="stylesheet">
+        <link type="text/css" href="{% static 'assets/css/app.rtl.css' %}" rel="stylesheet">
+        <!-- Simplebar -->
+        <link type="text/css" href="{% static 'assets/vendor/simplebar.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        </style>
+        <div class="mdk-drawer-layout js-mdk-drawer-layout" data-fullbleed data-push data-responsive-width="992px" data-has-scrolling-region>
+            <div class="mdk-drawer-layout__content">
+                <!-- header-layout -->
+                <div class="mdk-header-layout js-mdk-header-layout  mdk-header--fixed  mdk-header-layout__content--scrollable">
+                    <!-- header -->
+                    <div class="mdk-header js-mdk-header bg-success" data-fixed>
+                        <div class="mdk-header__content">
+                            <nav class="navbar navbar-expand-md bg-success navbar-dark d-flex-none">
+                                <button class="btn btn-link text-white pl-0" type="button" data-toggle="sidebar">
+                                <i class="material-icons align-middle md-36">short_text</i>
+                                </button>
+                                <div class="page-title m-0">{{ head }}</div>
+                                <div class="collapse navbar-collapse" id="mainNavbar">
+                                    <ul class="navbar-nav ml-auto align-items-center">
+                                        Hello, {{ request.user }}!
+                                        
+                                        
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- content -->
+                    <div class="mdk-header-layout__content top-navbar mdk-header-layout__content--scrollable h-100">
+                        <!-- main content -->
+                        <div class="container-fluid">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert {{ message.tags }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                            {% block content %}
+                            {% endblock content %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- // END drawer-layout__content -->
+            <!-- drawer -->
+            <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
+                <div class="mdk-drawer__content">
+                    <div class="mdk-drawer__inner" data-simplebar data-simplebar-force-enabled="true">
+                        <nav class="drawer  drawer--dark bg-danger">
+                            <div class="drawer-spacer">
+                                <div class="media align-items-center">
+                                    <a href="index.html" class="drawer-brand-circle mr-2 bg-success">P</a>
+                                    <div class="media-body">
+                                        <a href="index.html" class="h5 m-0 text-link">Payroll System</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- HEADING -->
+                            <div class="py-2 drawer-heading text-white">
+                                Dashboards
+                            </div>
+                            <!-- DASHBOARDS MENU -->
+                            <ul class="drawer-menu" id="dasboardMenu" data-children=".drawer-submenu">
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "company-show" %}'>
+                                        <span class="drawer-menu-text">Company</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "employee-show" %}'>
+                                       
+                                        <span class="drawer-menu-text"> Employee</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "payroll-list" %}'>
+                                        
+                                        <span class="drawer-menu-text"> Payroll</span>
+                                    </a>
+                                </li>
+                                {% comment %}
+                               <li class="drawer-menu-item active ">
+                                    <a href='{% url "payroll-contributions" %}'>
+                                       
+                                        <span class="drawer-menu-text"> Contributions</span>
+                                    </a>
+                                </li> 
+                                {% endcomment %}
+                               
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "voucher" %}'>
+                                       
+                                        <span class="drawer-menu-text"> Voucher</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "show" %}'>
+                                       
+                                        <span class="drawer-menu-text"> Logs</span>
+                                    </a>
+                                </li>
+
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "general-settings" %}'>
+                                        
+                                        <span class="drawer-menu-text"> General Settings</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item active ">
+                                    <a href='{% url "logout" %}'>
+                                        
+                                        <span class="drawer-menu-text"> Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- // END drawer -->
+            <!-- drawer -->
+            <div class="mdk-drawer js-mdk-drawer" id="user-drawer" data-position="right" data-align="end">
+                <div class="mdk-drawer__content">
+                    <div class="mdk-drawer__inner" data-simplebar data-simplebar-force-enabled="true">
+                        <nav class="drawer drawer--light">
+                            <div class="drawer-spacer drawer-spacer-border">
+                                <div class="media align-items-center">
+                                    <img src="https://pbs.twimg.com/profile_images/928893978266697728/3enwe0fO_400x400.jpg" class="img-fluid rounded-circle mr-2" width="35" alt="">
+                                    <div class="media-body">
+                                        <a href="#" class="h5 m-0">Frontted</a>
+                                        <div>Account Manager</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="drawer-spacer bg-body-bg">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <p class="h6 text-gray m-0"><i class="material-icons align-middle md-18 text-primary">monetization_on</i> Balance</p>
+                                    <span>₱21,011</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p class="h6 text-gray m-0"><i class="material-icons align-middle md-18 text-primary">shopping_cart</i> Sales</p>
+                                    <span>142</span>
+                                </div>
+                            </div>
+                            <!-- MENU -->
+                            <ul class="drawer-menu" id="userMenu" data-children=".drawer-submenu">
+                                <li class="drawer-menu-item">
+                                    <a href="account.html">
+                                        <i class="material-icons">lock</i>
+                                        <span class="drawer-menu-text"> Account</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item">
+                                    <a href="profile.html">
+                                        <i class="material-icons">account_circle</i>
+                                        <span class="drawer-menu-text"> Profile</span>
+                                    </a>
+                                </li>
+                                <li class="drawer-menu-item">
+                                    <a href="login.html">
+                                        <i class="material-icons">exit_to_app</i>
+                                        <span class="drawer-menu-text"> Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- // END drawer -->
+        </div>
+        <!-- // END drawer-layout -->
+        {% comment %}
+        modal
+    {% endcomment %}
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ head }}</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <form method="POST" novalidate="">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ form|crispy  }}
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" id="modal" class="btn btn-success"> Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div class="modal" id="govbenefits">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Government Benefits Report</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <form action="{% url 'gov-benefits' %}" method="POST" novalidate="">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ form|crispy  }}
+                        </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="submit" id="modal" class="btn btn-success"> Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'assets/vendor/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'assets/vendor/popper.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap.min.js' %}"></script>
+    <!-- Simplebar -->
+    <!-- Used for adding a custom scrollbar to the drawer -->
+    <script src="{% static 'assets/vendor/simplebar.js' %}"></script>
+    <!-- Vendor -->
+    <script src="{% static 'assets/vendor/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/moment.min.js' %}"></script>
+    <!-- APP -->
+    <script src="{% static 'assets/js/color_variables.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+    <script src="{% static 'assets/vendor/dom-factory.js' %}"></script>
+    <!-- DOM Factory -->
+    <script src="{% static 'assets/vendor/material-design-kit.js' %}"></script>
+    <!-- MDK -->
+    <script>
+    (function() {
+    'use strict';
+    // Self Initialize DOM Factory Components
+    domFactory.handler.autoInit()
+    // Connect button(s) to drawer(s)
+    var sidebarToggle = document.querySelectorAll('[data-toggle="sidebar"]')
+    sidebarToggle.forEach(function(toggle) {
+    toggle.addEventListener('click', function(e) {
+    var selector = e.currentTarget.getAttribute('data-target') || '#default-drawer'
+    var drawer = document.querySelector(selector)
+    if (drawer) {
+    if (selector == '#default-drawer') {
+    $('.container-fluid').toggleClass('container--max');
+    }
+    drawer.mdkDrawer.toggle();
+    }
+    })
+    })
+    })()
+    </script>
+    <script src="{% static 'assets/vendor/morris.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/raphael.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap-datepicker.min.js' %}"></script>
+    <script src="{% static 'assets/js/datepicker.js' %}"></script>
+    <script>
+    $(function() {
+    window.morrisDashboardChart = new Morris.Area({
+    element: 'morris-area-chart',
+    data: [{
+    year: '2017-01',
+    a: 6352.27
+    },
+    {
+    year: '2017-02',
+    a: 4309.98
+    },
+    {
+    year: '2017-03',
+    a: 1465.98
+    },
+    {
+    year: '2017-04',
+    a: 1298.25
+    },
+    {
+    year: '2017-05',
+    a: 3209
+    },
+    {
+    year: '2017-06',
+    a: 2083
+    },
+    {
+    year: '2017-07',
+    a: 1285.23
+    },
+    {
+    year: '2017-08',
+    a: 1289
+    },
+    {
+    year: '2017-09',
+    a: 4430
+    },
+    {
+    year: '2017-10',
+    a: 8921.19
+    }
+    ],
+    xkey: 'year',
+    ykeys: ['a'],
+    labels: ['Earnings'],
+    lineColors: ['#fff'],
+    fillOpacity: '0.2',
+    gridEnabled: true,
+    gridTextColor: '#ffffff',
+    resize: true
+    });
+    });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js
+    "></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js
+    "></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js
+    "></script>
+    <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+    </script>
+</body>
+<!-- Mirrored from demo.frontted.com/hero/050520180000/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 28 Sep 2018 11:44:46 GMT -->
+</html>

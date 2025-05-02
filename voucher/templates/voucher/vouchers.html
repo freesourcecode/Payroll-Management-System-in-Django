@@ -1,0 +1,52 @@
+{% extends "hrms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<h4 class="card-title">
+			{{ head }}
+			</h4>
+		</div>
+		<div class="card-body">
+
+        <a href='{% url "voucher-add" %}' class="btn btn-danger" >Add Voucher</a>
+
+        
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+			<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+				
+			<div class="table-responsive" style="margin-top: 10px">
+				<table id="example" class="table table-striped table-bordered" style="width:100%">
+					<thead class="bg-success text-white">
+						<tr>
+							<th scope="col" class="text-center">#</th>
+							<th scope="col" class="text-center">RC No</th>
+							<th scope="col" class="text-center">Voucher No</th>
+							<th scope="col" class="text-center">Place</th>
+							<th scope="col" class="text-center">Paid To</th>
+							<th scope="col" class="text-center">Date Created</th>
+							<th scope="col" class="text-center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for vouch in vouchers %}
+							<tr>
+								<th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+								<td class="align-middle text-center">{{ vouch.rc_no }} </td>
+								<td class="align-middle text-center">{{ vouch.voucher_no }} </td>
+								<td class="align-middle text-center">{{ vouch.place }}</td>
+								<td class="align-middle text-center">{{ vouch.paid_to }}</td>
+								<td class="align-middle text-center">{{ vouch.date_created }}</td><td class="align-middle text-center">
+									<a href="{% url 'voucher-update' vouch.id %}" class="btn btn-primary">Update</a>
+									<a href="{% url 'encode-particulars' vouch.id %}" class="btn btn-danger">Encode Particulars</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

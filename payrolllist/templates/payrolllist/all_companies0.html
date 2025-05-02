@@ -1,0 +1,43 @@
+{% extends "hrms/base.html" %}
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<h4 class="card-title">
+			{{ head }}
+			</h4>
+		</div>
+		<div class="card-body">
+
+        <a href='{% url "company-add" %}' class="btn btn-primary" >Add Company</a>
+
+			<div class="table-responsive" style="margin-top: 10px">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col" class="text-center">#</th>
+							<th scope="col" class="text-center">Company Name</th>
+							<th scope="col" class="text-center">Contact Person</th>
+							<th scope="col" class="text-center">Phone</th>
+							<th scope="col" class="text-center">Email</th>
+							<th scope="col" class="text-center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for company in companies %}
+							<tr>
+								<th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+								<td class="align-middle text-center">{{ company.company_name }}</td>
+								<td class="align-middle text-center">{{ company.contact_person }}</td>
+								<td class="align-middle text-center">{{ company.phone }}</td>
+								<td class="align-middle text-center">{{ company.email }}</td>
+								<td class="align-middle text-center">
+									<a href="{% url 'company-update' company.pk %}" class="btn btn-info">Update</a>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock content %}

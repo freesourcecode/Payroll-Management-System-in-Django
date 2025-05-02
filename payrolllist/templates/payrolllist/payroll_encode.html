@@ -1,0 +1,188 @@
+{% extends "hrms/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+	<div class="card">
+		<div class="card-body">
+			<h4>{{base_payroll}} - <strong>{{ employee_name }}</strong></h4>
+        <a href="{% url 'payroll-view' payroll_view %}" class="btn btn-warning">Go back</a>
+				<hr>
+			<form method="POST" novalidate="">
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-3 example-grid-col">
+					</div>
+					<div class="col-6 example-grid-col">
+						<h5><strong>Regular Inputs</strong></h5>
+						{{ form|crispy  }}
+					</div>
+					<div class="col-3 example-grid-col">
+					</div>
+
+				</div>
+				{# <input type="text" name="may_ecola" id="may_ecola" value="{{may_ecola}}"> #}
+				<div align='right'>
+				<button onclick="return confirm('are you sure you doubled check the contents?')" type="submit" class="btn btn-success"> Save</button>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+
+<script type="text/javascript">
+
+		function get_regular_amount(){
+			var rate= document.getElementsByName("rate")[0].value
+			var regular_days = document.getElementsByName("regular_days")[0].value
+			var result = roundUp(rate * regular_days, 2) ;
+
+			document.getElementById("regular_amount").value = result;
+
+
+			// calculate for net
+			get_net()
+
+		}
+
+		function get_training_amount(){
+			var training_rate= document.getElementsByName("training_rate")[0].value
+			var training_days = document.getElementsByName("training_days")[0].value
+			var result = roundUp(training_rate*training_days * regular_days, 2) ;
+			document.getElementById("training_amount").value = result;
+
+			// calculate for net
+			get_net()
+		}
+
+
+		function get_overtime_regular_amount(){
+			var rate= document.getElementsByName("rate")[0].value
+			var overtime_regular = document.getElementsByName("overtime_regular")[0].value
+			var first_result = rate/8*1.25*overtime_regular;
+			var result = roundUp(first_result, 2) ;
+
+			document.getElementById("overtime_regular_amount").value = result;
+			// alert(first_result ,  result );
+			console.log(first_result);
+			console.log(result);
+			get_net()
+		}
+
+
+		function get_rest_day_amount(){
+			var rest_days= document.getElementsByName("rest_days")[0].value
+			var rate = Number(document.getElementsByName("rate")[0].value)
+			var result = roundUp(rest_days*((rate/8*1.3*8-rate)+rate), 2) ;
+			document.getElementById("rest_amount").value = result;
+
+			get_net()
+		}
+
+		function get_rest_day_overtime_amount(){
+			var rest_day_overtime= document.getElementsByName("rest_day_overtime")[0].value
+			var rate = Number(document.getElementsByName("rate")[0].value)
+			var result = roundUp(rate/8*1.69*rest_day_overtime, 2) ;
+			console.log(rate/8*1.69*rest_day_overtime);
+			console.log(result);
+			document.getElementById("rest_day_overtime_amount").value = result;
+
+			get_net()
+		}
+
+		function get_special_holiday_amount(){
+			var rate= document.getElementsByName("rate")[0].value
+			var special_holiday_days = document.getElementsByName("special_holiday_days")[0].value
+			var result = roundUp(rate*1.3*special_holiday_days, 2) ;
+		  document.getElementById("special_holiday_amount").value = result;
+
+			get_net()
+		}
+
+		function get_special_holiday_overtime_amount(){
+			var rate= document.getElementsByName("rate")[0].value
+			var special_holiday_overtime = document.getElementsByName("special_holiday_overtime")[0].value
+			var result = roundUp(rate/8*1.69*special_holiday_overtime, 2) ;
+			console.log(rate/8*1.69*special_holiday_overtime);
+			console.log(result);
+		  document.getElementById("special_holiday_overtime_amount").value = result;
+
+			get_net()
+		}
+
+		function get_tardiness_undertime_regular_amount(){
+			var rate= document.getElementsByName("rate")[0].value
+			var tardiness_undertime_regular = document.getElementsByName("tardiness_undertime_regular")[0].value
+			var result = roundUp(rate/8*tardiness_undertime_regular, 2) ;
+			console.log(rate/8*tardiness_undertime_regular);
+			console.log(result);
+		  document.getElementById("tardiness_undertime_regular_amount").value = result;
+
+			get_net()
+		}
+
+		function get_uniform(){
+			get_net()
+		}
+		function get_medical(){
+			get_net()
+		}
+		function get_canteen(){
+			get_net()
+		}
+		function get_gatepass(){
+			get_net()
+		}
+		function get_vale(){
+			get_net()
+		}
+		function get_pants(){
+			get_net()
+		}
+		function get_thirteenth_month(){
+			get_net()
+		}
+		function get_sil(){
+			get_net()
+		}
+
+		function get_net(){
+			// calculate for net
+			var net = parseFloat(document.getElementById("regular_amount").value) +  parseFloat(document.getElementById("overtime_regular_amount").value)
+			+ parseFloat(document.getElementById("rest_amount").value) + parseFloat(document.getElementById("rest_day_overtime_amount").value)
+			+ parseFloat(document.getElementById("special_holiday_amount").value) + parseFloat(document.getElementById("special_holiday_overtime_amount").value)
+			net = net - parseFloat(document.getElementById("tardiness_undertime_regular_amount").value)
+								- parseFloat(document.getElementById("id_gatepass").value)
+								- parseFloat(document.getElementById("id_uniform").value)
+								- parseFloat(document.getElementById("id_medical").value)
+								- parseFloat(document.getElementById("id_canteen").value)
+								- parseFloat(document.getElementById("id_sss").value)
+								- parseFloat(document.getElementById("id_pagibig").value)
+								- parseFloat(document.getElementById("id_philhealth").value)
+								- parseFloat(document.getElementById("id_vale").value)
+								- parseFloat(document.getElementById("id_pants").value)
+								- parseFloat(document.getElementById("id_thirteenth_month").value)
+								- parseFloat(document.getElementById("id_sil").value)
+			document.getElementById("net_amount").value = net
+		}
+
+
+		function roundUp(num, precision) {
+	    var numStr = num.toString();
+	     var newNum = num.toFixed(precision);
+
+	      // Handle for case: roundUp(2.555, 2) = 2.56
+	      var rest = (num - newNum).toFixed(precision + 1);
+	      var pw = Math.pow(10, precision);
+
+	      if (rest * pw  >= 0.5) {
+	        var roundUpStr = newNum + '9';
+	        return (parseFloat(roundUpStr)).toFixed(precision);
+	      }
+
+	      return Number(newNum);
+  	}
+
+</script>
+
+{% endblock content %}

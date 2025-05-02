@@ -1,0 +1,48 @@
+{% extends "hrms/base.html" %}
+{% block content %}
+	<div class="card">
+		<div class="card-header">
+			<h4 class="card-title">
+			{{ head }}
+			</h4>
+		</div>
+		<div class="card-body">
+
+        {% if found_employees %}
+          <a href='{% url "payroll-add" %}' class="btn btn-warning" >Go Back to Add Payroll</a>
+        {% else %}
+          <a href='{% url "payroll-add" %}' class="btn btn-primary" >Add Payroll</a>
+        {% endif %}
+
+
+
+      {% if found_employees %}
+      <div class="table-responsive" style="margin-top: 10px">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col" class="text-center">#</th>
+              <th scope="col" class="text-center">Employee Name</th>
+              <th scope="col" class="text-center">Rate</th>
+              <th scope="col" class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for found in found_employees %}
+              <tr>
+                <th class="align-middle text-center" scope="row">{{ forloop.counter}}</th>
+                <td class="align-middle text-center">{{ found.employee }}</td>
+                <td class="align-middle text-center">{{ found.rate }}</td>
+                <td class="align-middle text-center">
+                  <a href="{% url 'payroll-encode' found.employee.pk %}" class="btn btn-info">Encode</a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+
+		</div>
+	</div>
+{% endblock content %}

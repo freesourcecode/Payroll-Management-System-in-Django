@@ -1,0 +1,1184 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"employee",
+				"employee_id"
+			],
+			[
+				"emplo",
+				"employee_acceptance"
+			],
+			[
+				"epl",
+				"employee_id"
+			],
+			[
+				"POst",
+				"PostUpdate"
+			],
+			[
+				"may",
+				"may_duplicate"
+			],
+			[
+				"lahat",
+				"lahat_ng_posts"
+			],
+			[
+				"Get",
+				"GetHomeTimeline"
+			],
+			[
+				"fo",
+				"followers"
+			],
+			[
+				"access",
+				"access_token_secret"
+			],
+			[
+				"consu",
+				"consumer_secret"
+			],
+			[
+				"consumer",
+				"consumer_key"
+			],
+			[
+				"Post",
+				"PostUpdate"
+			],
+			[
+				"x",
+				"xlabel"
+			],
+			[
+				"emp",
+				"employment_record"
+			],
+			[
+				"employee_re",
+				"employee_records"
+			],
+			[
+				"Employment",
+				"Employment_record"
+			],
+			[
+				"employment",
+				"employment_record"
+			],
+			[
+				"lis",
+				"listing"
+			],
+			[
+				"has",
+				"has_contacted"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"lsit",
+				"listing_id"
+			],
+			[
+				"listing",
+				"listing_id"
+			],
+			[
+				"list",
+				"listing_id"
+			],
+			[
+				"Contact",
+				"ContactAdmin"
+			],
+			[
+				"passw",
+				"password2"
+			],
+			[
+				"lsi",
+				"listing_id"
+			],
+			[
+				"col",
+				"col-md-12"
+			],
+			[
+				"wid",
+				"width\tAttr"
+			],
+			[
+				"BA",
+				"BASE_DIR"
+			],
+			[
+				"B",
+				"BASE_DIR"
+			],
+			[
+				"if",
+				"if\tif"
+			],
+			[
+				"phil",
+				"philhealth"
+			],
+			[
+				"pay",
+				"payroll_record"
+			],
+			[
+				"base",
+				"base_payroll_used_count"
+			],
+			[
+				"company",
+				"company_loan"
+			],
+			[
+				"contribution",
+				"contribution_kind"
+			],
+			[
+				"ser",
+				"search_company"
+			],
+			[
+				"searc",
+				"search_company"
+			],
+			[
+				"rseult",
+				"result_count"
+			],
+			[
+				"result",
+				"result_count"
+			],
+			[
+				"Employee",
+				"Employee_hiring_details"
+			],
+			[
+				"PHIL",
+				"PHILHEALTH"
+			],
+			[
+				"co",
+				"company_name"
+			],
+			[
+				"NIGHT",
+				"night_diff"
+			],
+			[
+				"NET",
+				"net_amount"
+			],
+			[
+				"pagi",
+				"pagibig"
+			],
+			[
+				"pag",
+				"pagibig_loan"
+			],
+			[
+				"SSS",
+				"sss_loan"
+			],
+			[
+				"SER",
+				"service_fee"
+			],
+			[
+				"PANS",
+				"pants"
+			],
+			[
+				"MISC",
+				"misc"
+			],
+			[
+				"HOUSE",
+				"house"
+			],
+			[
+				"TSHI",
+				"tshirt"
+			],
+			[
+				"THI",
+				"TSHIRT"
+			],
+			[
+				"SIL",
+				"sil"
+			],
+			[
+				"VA",
+				"vale"
+			],
+			[
+				"GATE",
+				"gatepass"
+			],
+			[
+				"CAN",
+				"canteen"
+			],
+			[
+				"rest_day",
+				"rest_day_overtime_amount"
+			],
+			[
+				"rest_",
+				"rest_amount"
+			],
+			[
+				"special",
+				"special_holiday_overtime_amount"
+			],
+			[
+				"holiday",
+				"holiday_overtime_amount"
+			],
+			[
+				"sunday",
+				"sunday_nd_amount"
+			],
+			[
+				"tardi",
+				"tardiness_undertime_regular"
+			],
+			[
+				"night",
+				"night_diff_amount"
+			],
+			[
+				"rest",
+				"rest_day_overtime_amount"
+			],
+			[
+				"res",
+				"rest_amount"
+			],
+			[
+				"spec",
+				"special_holiday_overtime"
+			],
+			[
+				"holida",
+				"holiday_regular_days"
+			],
+			[
+				"sunday_",
+				"sunday_amount"
+			],
+			[
+				"overtime",
+				"overtime_regular_amount"
+			],
+			[
+				"emp_count",
+				"emp_count_per_row"
+			],
+			[
+				"first",
+				"first_name"
+			],
+			[
+				"em",
+				"emp_list"
+			],
+			[
+				"payroll",
+				"payroll_record"
+			],
+			[
+				"contribut",
+				"contribution_kind"
+			],
+			[
+				"contribu",
+				"contributions"
+			],
+			[
+				"start",
+				"start_date"
+			],
+			[
+				"http",
+				"HttpResponse"
+			],
+			[
+				"end",
+				"end_date"
+			],
+			[
+				"Base",
+				"Base_payroll"
+			],
+			[
+				"con",
+				"contribution_kind"
+			],
+			[
+				"COnt",
+				"ContributionForm"
+			],
+			[
+				"pagibig",
+				"pagibig_loan"
+			],
+			[
+				"cp",
+				"company_loan"
+			],
+			[
+				"Employee_vale",
+				"Employee_valeloan_contrib"
+			],
+			[
+				"Emplo",
+				"Employee_valeloan_contrib"
+			],
+			[
+				"found_va",
+				"found_valeloan_contrib"
+			],
+			[
+				"Employee_pagi",
+				"Employee_pagibig_loan"
+			],
+			[
+				"contri",
+				"contribution_collected"
+			],
+			[
+				"found",
+				"found_comloan_contrib"
+			],
+			[
+				"save",
+				"saved_payroll"
+			],
+			[
+				"saved",
+				"saved_form"
+			],
+			[
+				"Employ",
+				"Employee_comloan_contrib"
+			],
+			[
+				"total",
+				"total_employer_pagibig_share"
+			],
+			[
+				"to",
+				"total_employer_philhealth_share"
+			],
+			[
+				"emlo",
+				"employer_sss"
+			],
+			[
+				"tota",
+				"sub_total"
+			],
+			[
+				"tar",
+				"tardiness_undertime_regular_amount"
+			],
+			[
+				"pagib",
+				"pagibig"
+			],
+			[
+				"pagbig",
+				"pagibig_loan"
+			],
+			[
+				"comap",
+				"company_loan"
+			],
+			[
+				"UNI",
+				"uniform"
+			],
+			[
+				"rest_da",
+				"rest_day_overtime_amount"
+			],
+			[
+				"ni",
+				"night_diff_amount"
+			],
+			[
+				"specia",
+				"special_holiday_overtime_amount"
+			],
+			[
+				"holi",
+				"holiday_regular_amount"
+			],
+			[
+				"payme",
+				"payment_method"
+			],
+			[
+				"get",
+				"get_object_or_404"
+			],
+			[
+				"row",
+				"row_num"
+			],
+			[
+				"ro",
+				"row_num"
+			],
+			[
+				"sss",
+				"sss_loan"
+			],
+			[
+				"th",
+				"thirteenth_month"
+			],
+			[
+				"regular",
+				"regular_amount"
+			],
+			[
+				"sun",
+				"sunday_overtime_amount"
+			],
+			[
+				"over",
+				"overtime_regular_amount"
+			],
+			[
+				"font",
+				"font_style"
+			],
+			[
+				"Empl",
+				"Employee"
+			],
+			[
+				"e",
+				"contract_expiration"
+			],
+			[
+				"date",
+				"date_hired"
+			],
+			[
+				"employee__",
+				"employee__company__company_name__icontains"
+			],
+			[
+				"search",
+				"search_by"
+			],
+			[
+				"Compa",
+				"CompanyAddForm"
+			],
+			[
+				"succ",
+				"successfully"
+			],
+			[
+				"no",
+				"novalidate\tAttr"
+			],
+			[
+				"Comp",
+				"CompanyAddForm"
+			],
+			[
+				"htt",
+				"HttpResponse"
+			],
+			[
+				"for",
+				"ForeignKey"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/Admin/Desktop/microblog/myapp/routes.py",
+			"settings":
+			{
+				"buffer_size": 96,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "routes.py"
+			}
+		},
+		{
+			"file": "/C/Users/Admin/Desktop/microblog/microblog.py",
+			"settings":
+			{
+				"buffer_size": 21,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "microblog.py"
+			}
+		},
+		{
+			"file": "/C/Users/Admin/Desktop/microblog/myapp/__init__.py",
+			"settings":
+			{
+				"buffer_size": 73,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Admin/Desktop/microblog/myapp/notes",
+			"settings":
+			{
+				"buffer_size": 572,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "flask tuts"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 190.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Admin/Desktop/microblog",
+		"/C/Users/Admin/Desktop/microblog/myapp"
+	],
+	"file_history":
+	[
+		"/C/Users/Admin/Desktop/microblog/myapp/microblog.py",
+		"/C/Users/Admin/Desktop/microblog/app/__init__.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/templates/employee/employee_resume.html",
+		"/C/Users/Admin/Desktop/sta/hello.py",
+		"/C/Users/Admin/Desktop/plvnodepres/nodepres/index.html",
+		"/C/Users/Admin/Desktop/tweet_me/twiiter_credentials.py",
+		"/C/Users/Admin/AppData/Local/Temp/Temp1_plvnodepres.zip/nodepres/index.html",
+		"/C/Users/Admin/Desktop/data/viz.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/contacts/views.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/btre/settings.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/listings/listing.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/contacts/urls.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/btre/urls.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/contacts/admin.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/contacts/models.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/base.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/partials/_navbar.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/accounts/views.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/pages/index.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/pages/about.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/listings/listings.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/listings/search.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/accounts/register.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/accounts/login.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/accounts/dashboard.html",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/dashboard.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/partials/_alerts.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/btre/static/js/main.js",
+		"/C/Users/Admin/Desktop/bt_project/btre/accounts/urls.py",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/register.html",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/login.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/listings/views.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/pages/views.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/listings/choices.py",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/search.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/realtors/models.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/listings/models.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/listings/admin.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/realtors/admin.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/btre/static/css/admin.css",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/admin/base_site.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/listings/urls.py",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/listing.html",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/listings.html",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/about.html",
+		"/E/[FreeCourseLab.com] Udemy - Python Django Dev To Deployment/btre_resources/btre_theme/dist/index.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/pages/urls.py",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/partials/_topbar.html",
+		"/C/Users/Admin/Desktop/bt_project/btre/templates/partials/_footer.html",
+		"/C/Users/Admin/Desktop/bt_project/.gitignore",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/views.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/models.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/models.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/views.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/templates/payrolllist/payroll_contributions.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/templates/hrms/all_companies.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/templates/hrms/company_update.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/templates/hrms/search_results.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/templates/employee/employee_contrib.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/templates/employee/search_results.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/views.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/urls.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/forms.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/templates/employee/all_employees.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/templates/employee/employee_add.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/templates/hrms/company_add.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/templates/hrms/base.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/models.py",
+		"/C/Users/Admin/Dropbox/championci/localhost.sql",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/urls.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/templates/payrolllist/payroll_list.html",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/forms.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/admin.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payrolllist/admin.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/employee/urls.py",
+		"/C/Users/Admin/Desktop/lu_payroll/todo.todo",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/static/assets/js/payrollist.js",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/hrms/forms.py",
+		"/C/Users/Admin/Desktop/lu_payroll/payroll/payroll/settings.py",
+		"/C/django_deckman/mod1_queuing/admin.py",
+		"/C/deckman/superadmin/models.py",
+		"/C/deckman/superadmin/forms.py",
+		"/C/deckman/mod2_regradm/models.py",
+		"/C/deckman/mod1_queuing/forms.py",
+		"/C/deckman/mod1_queuing/models.py",
+		"/C/deckman/superadmin/templates/superadmin/base.html",
+		"/C/deckman/mod1_queuing/templates/mod1_queuing/staff_tickets.html",
+		"/C/deckman/mod1_queuing/urls.py",
+		"/C/deckman/mod1_queuing/templates/mod1_queuing/search_tickets.html",
+		"/C/Users/Admin/Downloads/final/index.html",
+		"/C/Users/Admin/Downloads/final/assets/scripts/app.js"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 283.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Admin/Desktop/microblog/myapp/routes.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 96,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								96
+							]
+						],
+						"settings":
+						{
+							"auto_name": "routes.py",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Admin/Desktop/microblog/microblog.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								21
+							]
+						],
+						"settings":
+						{
+							"auto_name": "microblog.py",
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Admin/Desktop/microblog/myapp/__init__.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 73,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								55,
+								55
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Admin/Desktop/microblog/myapp/notes",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 572,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								571,
+								571
+							]
+						],
+						"settings":
+						{
+							"auto_name": "flask tuts",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 37.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 47.0
+	},
+	"input":
+	{
+		"height": 97.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "microblog.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"employee_s",
+				"payroll\\payrolllist\\templates\\payrolllist\\payroll_employees_found.html"
+			],
+			[
+				"employee_",
+				"payroll\\employee\\templates\\employee\\employee_resume.html"
+			],
+			[
+				"base",
+				"payroll\\hrms\\templates\\hrms\\base.html"
+			],
+			[
+				"models",
+				"payroll\\employee\\models.py"
+			],
+			[
+				"ACCEP",
+				"payroll\\employee\\templates\\employee\\acceptance.html"
+			],
+			[
+				"views",
+				"payroll\\employee\\views.py"
+			],
+			[
+				"listings/view",
+				"btre\\listings\\views.py"
+			],
+			[
+				"listi",
+				"btre\\templates\\listings\\listing.html"
+			],
+			[
+				"dash",
+				"btre\\templates\\accounts\\dashboard.html"
+			],
+			[
+				"accounts/view",
+				"btre\\accounts\\views.py"
+			],
+			[
+				"set",
+				"btre\\btre\\settings.py"
+			],
+			[
+				"",
+				"btre\\templates\\listings\\listing.html"
+			],
+			[
+				"listing",
+				"btre\\templates\\listings\\listing.html"
+			],
+			[
+				"contacts/admin",
+				"btre\\contacts\\admin.py"
+			],
+			[
+				"log",
+				"btre\\templates\\accounts\\login.html"
+			],
+			[
+				"regis",
+				"btre\\templates\\accounts\\register.html"
+			],
+			[
+				"list",
+				"btre\\templates\\listings\\listing.html"
+			],
+			[
+				"ser",
+				"btre\\templates\\listings\\search.html"
+			],
+			[
+				"about",
+				"btre\\templates\\pages\\about.html"
+			],
+			[
+				"nav",
+				"btre\\templates\\partials\\_navbar.html"
+			],
+			[
+				"index",
+				"btre\\templates\\pages\\index.html"
+			],
+			[
+				"SET",
+				"btre\\btre\\settings.py"
+			],
+			[
+				"urls",
+				"btre\\btre\\urls.py"
+			],
+			[
+				"idnex",
+				"btre\\templates\\pages\\index.html"
+			],
+			[
+				"settings",
+				"btre\\btre\\settings.py"
+			],
+			[
+				"search",
+				"btre\\templates\\listings\\search.html"
+			],
+			[
+				"sera",
+				"btre\\templates\\listings\\search.html"
+			],
+			[
+				"listings/model",
+				"btre\\listings\\models.py"
+			],
+			[
+				"VIEWS",
+				"btre\\listings\\views.py"
+			],
+			[
+				"view",
+				"btre\\listings\\views.py"
+			],
+			[
+				"lis",
+				"btre\\templates\\listings\\listings.html"
+			],
+			[
+				"realtors/admin",
+				"btre\\realtors\\admin.py"
+			],
+			[
+				"settg",
+				"btre\\btre\\settings.py"
+			],
+			[
+				"sett",
+				"btre\\btre\\settings.py"
+			],
+			[
+				"ignore",
+				".gitignore"
+			],
+			[
+				"all",
+				"payroll\\hrms\\templates\\hrms\\all_companies.html"
+			],
+			[
+				"comp",
+				"payroll\\hrms\\templates\\hrms\\company_update.html"
+			],
+			[
+				"forms",
+				"payroll\\payrolllist\\forms.py"
+			],
+			[
+				"payroll",
+				"payroll\\payrolllist\\templates\\payrolllist\\payroll_list.html"
+			],
+			[
+				"model",
+				"payroll\\employee\\models.py"
+			],
+			[
+				"mdoels",
+				"payroll\\employee\\models.py"
+			],
+			[
+				"contrib",
+				"payroll\\payrolllist\\templates\\payrolllist\\payroll_contributions.html"
+			],
+			[
+				"contri",
+				"payroll\\employee\\templates\\employee\\employee_contrib.html"
+			],
+			[
+				"company",
+				"payroll\\hrms\\templates\\hrms\\company_update.html"
+			],
+			[
+				"employee",
+				"payroll\\employee\\templates\\employee\\all_employees.html"
+			],
+			[
+				"emplyee",
+				"payroll\\employee\\templates\\employee\\employee_add.html"
+			],
+			[
+				"PAY",
+				"payroll\\payrolllist\\templates\\payrolllist\\payroll_list.html"
+			],
+			[
+				"admin",
+				"payroll\\employee\\admin.py"
+			],
+			[
+				"hrms/mo",
+				"payroll\\hrms\\models.py"
+			],
+			[
+				"urls.py",
+				"payroll\\payrolllist\\urls.py"
+			],
+			[
+				"employees",
+				"payroll\\employee\\templates\\employee\\all_employees.html"
+			],
+			[
+				"employee/form",
+				"payroll\\employee\\forms.py"
+			],
+			[
+				"payroll\\",
+				"payroll\\payrolllist\\templates\\payrolllist\\payroll_list.html"
+			],
+			[
+				"todo",
+				"todo.todo"
+			],
+			[
+				"payrloll",
+				"payrolllist\\templates\\payrolllist\\payroll_list.html"
+			],
+			[
+				"models em",
+				"employee\\models.py"
+			],
+			[
+				"admin sup",
+				"superadmin\\admin.py"
+			],
+			[
+				"users/view",
+				"users\\views.py"
+			],
+			[
+				"superadmin/views",
+				"superadmin\\views.py"
+			],
+			[
+				"mod1/vew",
+				"mod1_queuing\\views.py"
+			],
+			[
+				"mod1/url",
+				"mod1_queuing\\urls.py"
+			],
+			[
+				"staff",
+				"mod1_queuing\\templates\\mod1_queuing\\staff_tickets.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 246.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

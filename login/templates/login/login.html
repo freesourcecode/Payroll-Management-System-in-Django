@@ -1,0 +1,64 @@
+<style>
+    body{
+    background-color:#5286F3;
+    font-size:14px;
+    color:#fff;
+}
+.simple-login-container{
+    width:300px;
+    max-width:100%;
+    margin:50px auto;
+}
+.simple-login-container h2{
+    text-align:center;
+    font-size:20px;
+}
+
+.simple-login-container .btn-login{
+    background-color:blue;
+    color:#fff;
+}
+a{
+    color:#fff;
+}
+</style>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<body style="background-color: lightgreen">
+<form class="" action="{% url 'login' %}" method="post">
+
+<div class="simple-login-container">
+    <h2>Admin Login</h2>
+            {% csrf_token %}
+
+
+    {% if messages %}
+      {% for message in messages %}
+
+        <div align="center" class="alert {{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="password" name="password" placeholder="Enter your Password" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 form-group">
+            <input type="submit" class="btn btn-block btn-login" placeholder="Enter your Password" >
+        </div>
+    </div>
+</div>
+</form>
+</body>
